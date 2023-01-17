@@ -10,11 +10,12 @@ namespace Practicum_13_1
         {
             
             //StreamReader stream = new StreamReader("C:\\Users\\user\\Desktop\\IT\\Code\\Module_13_Collection\\Practicum_13_1\\Text1.txt");
-            //listadd();
-            //linkedlistadd();
+            listadd();
+            linkedlistadd();
             popular10words();
         }
 
+        //проверяем скорость загрузки в list
         static void listadd()
         {
             StreamReader str = new StreamReader("C:\\Users\\user\\Desktop\\IT\\Code\\Module_13_Collection\\Practicum_13_1\\Text1.txt");
@@ -27,10 +28,11 @@ namespace Practicum_13_1
             }
             timer.Stop();
             Console.WriteLine("Время добавления в list: " + timer.Elapsed.Milliseconds);
-            Console.WriteLine(text.Count);
+            //Console.WriteLine(text.Count);
+            Console.WriteLine();
             //foreach (string line in text) { Console.WriteLine(line); }
         }
-
+        //проверяем скорость загрузки в linkedlist
         static void linkedlistadd()
         {
             StreamReader str = new StreamReader("C:\\Users\\user\\Desktop\\IT\\Code\\Module_13_Collection\\Practicum_13_1\\Text1.txt");
@@ -46,10 +48,11 @@ namespace Practicum_13_1
             timer.Stop();
             Console.WriteLine("Время добавления в linkedlist: " + timer.Elapsed.Milliseconds);
             //Console.WriteLine(text.First.Value);
-            Console.WriteLine(text.Count);
+            //Console.WriteLine(text.Count);
+            Console.WriteLine();
             //foreach (string line in text) { Console.WriteLine(line); }
         }
-
+        //находим 10 самых распространенных слов
         static void popular10words()
         {
             string txt = File.ReadAllText("C:\\Users\\user\\Desktop\\IT\\Code\\Module_13_Collection\\Practicum_13_1\\Text1.txt");
@@ -90,6 +93,7 @@ namespace Practicum_13_1
             var sorted = sortwords.OrderByDescending(x => x.Value).ToArray();
             //возьмем 10 первых
             var top10 = sorted.Take(10);
+            Console.WriteLine("Топ 10 самых распространненых слов в тексте :");
             foreach (KeyValuePair<string, int> word in top10)
             {
                 Console.WriteLine(word.Key + ":" + word.Value);
